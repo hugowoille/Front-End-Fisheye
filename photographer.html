@@ -11,18 +11,26 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="index.html">
+      <img src="assets/images/logo.png" class="logo" />
+    </a>
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       <div id="photographer-card">
-        <h1 id="photographer-name"></h1>
-        <div id="photographer-location"></div>
-        <p id="photographer-tagline"></p>
-        <img id="photographer-picture">
-
+        <h2 id="photographer-name">
+          </h1>
+          <div id="photographer-location"></div>
+          <p id="photographer-tagline"></p>
       </div>
+      <div id="flex-button">
+        <button class="contact_button" onclick="displayModal()">Contactez-moi
+        </button>
+      </div>
+      <figure id="flex-img">
+        <img id="photographer-picture">
+      </figure>
+
     </div>
 
   </main>
