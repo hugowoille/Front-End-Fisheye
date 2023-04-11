@@ -16,23 +16,27 @@
     </a>
   </header>
   <main id="main">
-    <div class="photograph-header">
-      <div id="photographer-card">
-        <h2 id="photographer-name">
-          </h1>
-          <div id="photographer-location"></div>
-          <p id="photographer-tagline"></p>
+    <div id="photographer-container" class="photographer-header">
+
+      <div class="photographer-card">
+        <h2 class="photographer-name">
+        </h2>
+        <div class="photographer-location"></div>
+        <p class="photographer-tagline"></p>
       </div>
-      <div id="flex-button">
+      <div class="flex-button">
         <button class="contact_button" onclick="displayModal()">Contactez-moi
         </button>
       </div>
-      <figure id="flex-img">
-        <img id="photographer-picture">
+      <figure class="flex-img">
+        <img class="photographer-picture">
       </figure>
-
     </div>
+    <section id="photographer-medias">
 
+
+    </section>
+    <!-- pourquoi je ne peux pas le mettre dans photographer-media? -->
   </main>
   <div id="contact_modal">
     <div class="modal">
@@ -49,6 +53,8 @@
       </form>
     </div>
   </div>
+  <script src="scripts/factories/media.js"></script>
+  <script src="scripts/factories/photographer.js"></script>
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>

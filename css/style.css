@@ -51,14 +51,15 @@ h1 {
 
 
 
-.photograph-header {
+#photographer-container {
     display: flex;
-    flex-direction: row;
     max-width: 100%;
     padding: 0 4%;
 }
 
-#photographer-card {
+
+
+.photographer-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,22 +67,22 @@ h1 {
 
 }
 
-#photographer-name {
+.photographer-name {
     color: #D3573C;
     font-size: 3em;
     margin: 0;
 }
 
-#photographer-location {
+.photographer-location {
     color: #901C1C;
     font-size: 2em;
 }
 
-#photographer-tagline {
+.photographer-tagline {
     color: #525252
 }
 
-#flex-button {
+.flex-button {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -89,8 +90,7 @@ h1 {
 
 }
 
-#flex-img {
-
+.flex-img {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -98,10 +98,15 @@ h1 {
     overflow: hidden;
 }
 
-#photographer-picture {
+.photographer-picture {
     object-fit: cover;
     width: 200px;
     height: 200px;
     border-radius: 100%;
+}
 
+
+#photographer-media-img {
+    height: 50%;
+    width: 50%;
 }
