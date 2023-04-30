@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
-    const { name, portrait, id, city, tagline, } = data;
+    const { name, portrait, id, city, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -27,10 +27,11 @@ function photographerFactory(data) {
     function getPhotographerDOM(containerID) {
         const container = document.getElementById(containerID)
 
-        container.querySelector(".photographer-name").innerHTML = name
-        container.querySelector(".photographer-location").innerHTML = city
-        container.querySelector(".photographer-tagline").innerHTML = tagline
-        container.querySelector(".photographer-picture").src = picture
+        container.querySelector(".photographer-name").innerHTML = name;
+        container.querySelector(".photographer-location").innerHTML = city;
+        container.querySelector(".photographer-tagline").innerHTML = tagline;
+        container.querySelector(".photographer-picture").src = picture;
+        container.querySelector(".photographer-price").innerText = price;
 
     }
     return { name, picture, getUserCardDOM, getPhotographerDOM };

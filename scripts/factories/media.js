@@ -17,19 +17,37 @@ async function getPhotographerMedias(photographerId) {
 }
 
 
-function photographerMediasfactory(mediaData) {
-    const linkmedias = `assets/sample_photos/tracy/`
+function photographerMediasfactory(mediaData, folderName) {
+    const folderPath = `assets/medias/${folderName}/`;
+    const linkmedias = folderPath + mediaData.image;
+    const linkvideos = folderPath + mediaData.video;
+
     function createHTML() {
         const container = document.createElement("div");
         const titleContainer = document.createElement("h2");
         titleContainer.innerHTML = mediaData.title;
 
+        if (mediaData.image) {
+            const imgContainer = document.createElement("img");
+            imgContainer.setAttribute("src", linkmedias);
+            imgContainer.classList.add("img-media");
+            container.appendChild(imgContainer);
+        }
+        if (mediaData.video) {
+            const videoContainer = document.createElement("video");
+            videoContainer.setAttribute("src", linkvideos);
+            videoContainer.setAttribute("controls", linkvideos);
+            videoContainer.classList.add("video-media");
+            container.appendChild(videoContainer);
+        }
 
         container.appendChild(titleContainer);
+
+
         /* displayphotographerMediaImg.src = `assets/sample_photos/tracy/${mediaData.image}` */
         return container
     }
-    return { createhtml: createHTML, imageUrl: linkmedias }
+    return { createhtml: createHTML, imageUrl: linkmedias, videoUrl: linkvideos }
 }
 
 async function displayPhotographerMedias(photographerID) {
@@ -37,10 +55,15 @@ async function displayPhotographerMedias(photographerID) {
     const mediasData = await getPhotographerMedias(photographerID)
     const containerMedias = document.getElementById("photographer-medias")
 
+    const photographerData = await getPhotographer(photographerID);
+    console.log("photographerData = ", photographerData)
+
     mediasData.forEach((media) => {
-        const mediaModel = photographerMediasfactory(media)
+
+        const mediaModel = photographerMediasfactory(media, photographerID)
         const htmlMedia = mediaModel.createhtml()
         containerMedias.appendChild(htmlMedia)
+
     });
 
 }

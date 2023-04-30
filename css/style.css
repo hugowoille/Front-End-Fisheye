@@ -110,3 +110,12 @@ h1 {
     height: 50%;
     width: 50%;
 }
+
+.photographer-price {
+    position: fixed;
+    bottom: 0;
+    right: 150px;
+    background: #DB8876;
+    border-radius: 5px 5px 0 0;
+    padding: 21px 34px;
+}
