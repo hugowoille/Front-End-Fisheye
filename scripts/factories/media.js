@@ -24,8 +24,13 @@ function photographerMediasfactory(mediaData, folderName) {
 
     function createHTML() {
         const container = document.createElement("div");
+        container.setAttribute("class", "media-container")
+        const mediaTextContainer = document.createElement("div")
+        mediaTextContainer.setAttribute("class", "media-text-container")
         const titleContainer = document.createElement("h2");
         titleContainer.innerHTML = mediaData.title;
+        const numberOfLikes = document.createElement("p");
+        numberOfLikes.innerHTML = mediaData.likes + " ♥ ";
 
         if (mediaData.image) {
             const imgContainer = document.createElement("img");
@@ -40,8 +45,9 @@ function photographerMediasfactory(mediaData, folderName) {
             videoContainer.classList.add("video-media");
             container.appendChild(videoContainer);
         }
-
-        container.appendChild(titleContainer);
+        container.appendChild(mediaTextContainer)
+        mediaTextContainer.appendChild(titleContainer);
+        mediaTextContainer.appendChild(numberOfLikes)
 
 
         /* displayphotographerMediaImg.src = `assets/sample_photos/tracy/${mediaData.image}` */
@@ -70,12 +76,3 @@ async function displayPhotographerMedias(photographerID) {
 
 
 
-
-
-
-/* 
-function mediaFactory(data) {
-    const { media } = data
-    console.log(media)
-}
- */

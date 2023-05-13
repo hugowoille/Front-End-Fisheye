@@ -6,21 +6,41 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const container = document.createElement("a");
+        container.setAttribute("class", "card-DOM")
 
         container.setAttribute("href", "photographer.html?id=" + id);
         const article = document.createElement("article");
         const img = document.createElement("img");
         img.setAttribute("src", picture);
+
+        const cardDOMTextContent = document.createElement('div')
+        cardDOMTextContent.setAttribute("class", "card-text-content")
+
         const h2 = document.createElement("h2");
-        const button = document.createElement("button");
+        h2.setAttribute("class", "card-h2")
         h2.textContent = name;
 
+        const location = document.createElement("p")
+        location.setAttribute("class", "card-location")
+        location.textContent = city;
+
+        const taglineContent = document.createElement("p")
+        taglineContent.setAttribute("class", "card-tagline")
+        taglineContent.textContent = tagline;
+
+        const priceContent = document.createElement("p")
+        priceContent.setAttribute("class", "card-price")
+        priceContent.textContent = price + "€/jour";
 
         container.appendChild(article);
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(button);
 
+        article.appendChild(img);
+
+        article.appendChild(cardDOMTextContent)
+        cardDOMTextContent.appendChild(h2);
+        cardDOMTextContent.appendChild(location);
+        cardDOMTextContent.appendChild(taglineContent);
+        cardDOMTextContent.appendChild(priceContent);
 
         return (container);
     }
@@ -31,7 +51,8 @@ function photographerFactory(data) {
         container.querySelector(".photographer-location").innerHTML = city;
         container.querySelector(".photographer-tagline").innerHTML = tagline;
         container.querySelector(".photographer-picture").src = picture;
-        container.querySelector(".photographer-price").innerText = price;
+        container.querySelector(".photographer-price").innerText = price + "€ / jour";
+
 
     }
     return { name, picture, getUserCardDOM, getPhotographerDOM };

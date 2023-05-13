@@ -11,7 +11,6 @@ async function init() {
 
     // étape 4 display le photographe
     displayPhotographerItems(photographerData);
-
     displayPhotographerMedias(photographerId);
 }
 

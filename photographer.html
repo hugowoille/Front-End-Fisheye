@@ -3,6 +3,7 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -19,10 +20,12 @@
     <div id="photographer-container" class="photographer-header">
 
       <div class="photographer-card">
-        <h2 class="photographer-name">
+        <h1 class="photographer-name">
+        </h1>
+        <h2>
+          <div class="photographer-location"></div>
+          <p class="photographer-tagline"></p>
         </h2>
-        <div class="photographer-location"></div>
-        <p class="photographer-tagline"></p>
       </div>
       <div class="flex-button">
         <button class="contact_button" onclick="displayModal()">Contactez-moi
@@ -33,6 +36,7 @@
       </figure>
       <div class="photographer-price"></div>
     </div>
+    <p class="filter">Filtrer par : </p>
     <section id="photographer-medias">
 
     </section>
@@ -44,19 +48,25 @@
         <h2>Contactez-moi</h2>
         <img src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
-      <form>
+      <form id="form-signup">
         <div>
-          <label>Prénom</label>
-          <input />
+          <label>Prénom : </label>
+          <input id="firstname" />
+          <label for="">Nom : </label>
+          <input id="lastname" />
+          <label for="">Email : </label>
+          <input id="email" />
+          <label for="">Votre message : </label>
+          <input id="message" />
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button class="contact_button" type="submit">Envoyer</button>
       </form>
     </div>
   </div>
   <script src="scripts/factories/media.js"></script>
   <script src="scripts/factories/photographer.js"></script>
   <script src="/scripts/pages/photographer.js"></script>
-  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
 </body>
 
 </html>

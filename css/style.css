@@ -3,6 +3,8 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+
+
 }
 
 
@@ -12,6 +14,11 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    padding: 0 100px;
+}
+
+#main {
+    padding: 0 100px;
 }
 
 h1 {
@@ -21,7 +28,7 @@ h1 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+
 }
 
 .photographer_section {
@@ -31,6 +38,11 @@ h1 {
     margin-top: 100px;
 }
 
+.card-DOM {
+    text-decoration: none;
+}
+
+
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -39,22 +51,67 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.card-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+}
+
+.card-h2,
+.card-location,
+.card-tagline,
+.card-price {
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.card-h2 {
     color: #D3573C;
     font-size: 36px;
+}
+
+.card-location {
+    font-size: 13px;
+    color: #901C1C;
+    font-weight: 400;
+}
+
+.card-tagline {
+    font-size: 10px;
+    color: #000000;
+}
+
+.card-price {
+    font-size: 9px;
+    color: #757575;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 9999px;
 }
+
+
+
+
+
+/* PHOTOGRAPHER PAGE */
 
 
 
 #photographer-container {
     display: flex;
     max-width: 100%;
-    padding: 0 4%;
+
+    background-color: #FAFAFA;
+    border-radius: 5px;
+    align-items: center;
+    padding: 71px 50px;
+
 }
 
 
@@ -69,7 +126,7 @@ h1 {
 
 .photographer-name {
     color: #D3573C;
-    font-size: 3em;
+    font-size: 64px;
     margin: 0;
 }
 
@@ -91,24 +148,70 @@ h1 {
 }
 
 .flex-img {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    margin: 0;
+
 }
+
 
 .photographer-picture {
     object-fit: cover;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     border-radius: 100%;
 }
 
 
-#photographer-media-img {
-    height: 50%;
-    width: 50%;
+.filter {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#photographer-medias {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+    gap: 45px;
+
+}
+
+.media-container {
+    width: 25%;
+}
+
+.media-text-container {
+    color: #901C1C;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 400;
+    justify-content: space-between;
+
+}
+
+.media-text-container h2 {
+    font-weight: 400;
+}
+
+.media-text-container p {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.img-media {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.video-media {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    ;
 }
 
 .photographer-price {
