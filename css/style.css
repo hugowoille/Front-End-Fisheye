@@ -31,24 +31,34 @@ h1 {
 
 }
 
-.photographer_section {
+/* Container Section Index */
+
+.photographer_section-index {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.card-DOM {
-    text-decoration: none;
-}
-
-
-.photographer_section article {
+.photographer_section-index article {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.photographer_section-index article img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 9999px;
+}
+
+/* card generated from factory */
+
+.card-DOM {
+    text-decoration: none;
 }
 
 .card-text-content {
@@ -86,139 +96,4 @@ h1 {
 .card-price {
     font-size: 9px;
     color: #757575;
-}
-
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 9999px;
-}
-
-
-
-
-
-/* PHOTOGRAPHER PAGE */
-
-
-
-#photographer-container {
-    display: flex;
-    max-width: 100%;
-
-    background-color: #FAFAFA;
-    border-radius: 5px;
-    align-items: center;
-    padding: 71px 50px;
-
-}
-
-
-
-.photographer-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-
-}
-
-.photographer-name {
-    color: #D3573C;
-    font-size: 64px;
-    margin: 0;
-}
-
-.photographer-location {
-    color: #901C1C;
-    font-size: 2em;
-}
-
-.photographer-tagline {
-    color: #525252
-}
-
-.flex-button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.flex-img {
-    margin: 0;
-
-}
-
-
-.photographer-picture {
-    object-fit: cover;
-    width: 250px;
-    height: 250px;
-    border-radius: 100%;
-}
-
-
-.filter {
-    font-weight: 700;
-    font-size: 18px;
-}
-
-#photographer-medias {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
-    gap: 45px;
-
-}
-
-.media-container {
-    width: 25%;
-}
-
-.media-text-container {
-    color: #901C1C;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-weight: 400;
-    justify-content: space-between;
-
-}
-
-.media-text-container h2 {
-    font-weight: 400;
-}
-
-.media-text-container p {
-    font-weight: 500;
-    font-size: 24px;
-}
-
-.img-media {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.video-media {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 5px;
-    ;
-}
-
-.photographer-price {
-    position: fixed;
-    bottom: 0;
-    right: 150px;
-    background: #DB8876;
-    border-radius: 5px 5px 0 0;
-    padding: 21px 34px;
 }

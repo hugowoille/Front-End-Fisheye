@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { name, portrait, id, city, tagline, price } = data;
-
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
@@ -33,9 +32,7 @@ function photographerFactory(data) {
         priceContent.textContent = price + "€/jour";
 
         container.appendChild(article);
-
         article.appendChild(img);
-
         article.appendChild(cardDOMTextContent)
         cardDOMTextContent.appendChild(h2);
         cardDOMTextContent.appendChild(location);
@@ -53,10 +50,8 @@ function photographerFactory(data) {
         container.querySelector(".photographer-picture").src = picture;
         container.querySelector(".photographer-price").innerText = price + "€ / jour";
 
-
     }
     return { name, picture, getUserCardDOM, getPhotographerDOM };
-
 
 }
 async function getPhotographers() {
@@ -68,14 +63,13 @@ async function getPhotographers() {
         console.log(error);
     }
 }
-async function getPhotographer(id) {
 
+async function getPhotographer(id) {
     try {
         const apiReponse = await fetch("./data/photographers.json");
         const data = await apiReponse.json();
         let photographer;
         photographer = data.photographers.find((element) => id === element.id)
-        console.log('id : ', photographer);
         return photographer
     } catch (error) {
         console.log(error);
