@@ -11,6 +11,7 @@ function photographerFactory(data) {
         const article = document.createElement("article");
         const img = document.createElement("img");
         img.setAttribute("src", picture);
+        img.setAttribute("alt", name)
 
         const cardDOMTextContent = document.createElement('div')
         cardDOMTextContent.setAttribute("class", "card-text-content")

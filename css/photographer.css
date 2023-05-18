@@ -81,12 +81,6 @@
     width: 25%;
 }
 
-.media-container:last-child {
-    align-self: flex-start !important;
-    justify-self: self-start !important;
-    justify-content: flex-start !important;
-    border: 5px solid #901C1C
-}
 
 .img-media {
     width: 100%;

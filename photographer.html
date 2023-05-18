@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 
@@ -18,7 +18,7 @@
 
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye" aria-label="lien vers la page d'accueil" />
     </a>
   </header>
 
@@ -36,7 +36,8 @@
         </h2>
       </div>
       <div class="flex-button">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi
+        <button class="contact_button" onclick="displayModal()"
+          aria-label="Ouvre le formulaire de contact">Contactez-moi
         </button>
       </div>
       <figure class="flex-img">
@@ -56,20 +57,23 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="ferme le formulaire" />
       </header>
       <form id="form-signup">
 
-        <label>Prénom : </label>
-        <input id="firstname" />
-        <label for="">Nom : </label>
-        <input id="lastname" />
-        <label for="">Email : </label>
-        <input id="email" />
-        <label for="">Votre message : </label>
-        <input id="message" />
+        <label for="firstname">Prénom : </label>
+        <input type="text" id="firstname" aria-label="entrez votre prénom" />
 
-        <button class="contact_button" type="submit">Envoyer</button>
+        <label for="lastname">Nom : </label>
+        <input type="text" id="lastname" aria-label="entrez votre nom" />
+
+        <label for="email">Email : </label>
+        <input type="text" id="email" aria-label="entrez votre email" placeholder="exemple@email.com" />
+
+        <label for="message">Votre message : </label>
+        <input type="text" id="message" aria-label="entrez votre message" />
+
+        <button class="contact_button" type="submit" aria-label="envoi votre message">Envoyer</button>
       </form>
     </div>
   </div>
