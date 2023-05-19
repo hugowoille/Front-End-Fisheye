@@ -35,6 +35,7 @@ function photographerMediasfactory(mediaData, folderName) {
         if (mediaData.image) {
             const imgContainer = document.createElement("img");
             imgContainer.setAttribute("src", linkmedias);
+            imgContainer.addEventListener('click', function () { displayLightbox() })
             imgContainer.classList.add("img-media");
             container.appendChild(imgContainer);
         }
@@ -53,7 +54,13 @@ function photographerMediasfactory(mediaData, folderName) {
         /* displayphotographerMediaImg.src = `assets/sample_photos/tracy/${mediaData.image}` */
         return container
     }
-    return { createhtml: createHTML, imageUrl: linkmedias, videoUrl: linkvideos }
+
+    function createLightBoxHTML() {
+        const container = document.createElement("div");
+
+    }
+    return { createhtml: createHTML, imageUrl: linkmedias, videoUrl: linkvideos, createLightBoxHTML }
+
 }
 
 async function displayPhotographerMedias(photographerID) {
@@ -71,8 +78,28 @@ async function displayPhotographerMedias(photographerID) {
         containerMedias.appendChild(htmlMedia)
 
     });
+    function displayMediaLightBox() {
+
+        const container = document.createElement("div");
+        container.innerHTML = "lightboxcontent"
+        /* boucle sur tout les médias et ajouter les médias dans le container*/
+        mediasData.forEach((media) => {
+
+            const mediaModel = photographerMediasfactory(media, photographerID);
+            const htmlMedia = mediaModel.createLightBoxHTML();
+            container.appendChild(htmlMedia);
+
+        });
+
+        return container
+    }
+
+    const lightBoxContent = displayMediaLightBox();
+    const lightBoxContentContainer = document.getElementById('lightbox-content')
+    lightBoxContentContainer.appendChild(lightBoxContent);
 
 }
+
 
 
 

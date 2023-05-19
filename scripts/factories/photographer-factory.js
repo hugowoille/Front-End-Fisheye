@@ -52,6 +52,9 @@ function photographerFactory(data) {
         container.querySelector(".photographer-price").innerText = price + "€ / jour";
 
     }
+
+
+
     return { name, picture, getUserCardDOM, getPhotographerDOM };
 
 }

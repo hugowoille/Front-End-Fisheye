@@ -17,8 +17,8 @@
   <!-- header -->
 
   <header>
-    <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye" aria-label="lien vers la page d'accueil" />
+    <a href="index.html" aria-label="page d'accueil">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye" />
     </a>
   </header>
 
@@ -57,7 +57,7 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="ferme le formulaire" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="ferme le formulaire" />
       </header>
       <form id="form-signup">
 
@@ -77,10 +77,20 @@
       </form>
     </div>
   </div>
+
+  <!-- modal -->
+
+  <div id="lightbox">
+    <div class="modal" id="lightbox-content">
+      <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="ferme la lightboxe" />
+      <p>lightbox</p>
+    </div>
+  </div>
   <script src="scripts/factories/media-factory.js"></script>
   <script src="scripts/factories/photographer-factory.js"></script>
   <script src="/scripts/pages/photographer-page.js"></script>
   <script src="scripts/utils/contactForm.js"></script>
+  <script src="scripts/utils/lightbox.js"></script>
 </body>
 
 </html>
