@@ -6,7 +6,6 @@ async function init() {
     const photographerId = getUrlId();
     // étape 2 Fetch le fichier jSon et return le photographe qui a l'ID en question
     const photographerData = await getPhotographer(photographerId);
-    console.log("photographer Data", photographerData)
     // étape 3 display le photographe
     displayPhotographerItems(photographerData);
     displayPhotographerMedias(photographerId);

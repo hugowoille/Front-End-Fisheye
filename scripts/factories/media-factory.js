@@ -22,6 +22,7 @@ function photographerMediasfactory(mediaData, folderName) {
     const linkmedias = folderPath + mediaData.image;
     const linkvideos = folderPath + mediaData.video;
 
+
     function createHTML() {
         const container = document.createElement("div");
         container.setAttribute("class", "media-container")
@@ -35,8 +36,9 @@ function photographerMediasfactory(mediaData, folderName) {
         if (mediaData.image) {
             const imgContainer = document.createElement("img");
             imgContainer.setAttribute("src", linkmedias);
-            imgContainer.addEventListener('click', function () { displayLightbox() })
+            imgContainer.addEventListener('click', function () { displayLightbox(mediaData.id) })
             imgContainer.classList.add("img-media");
+            imgContainer.style.cursor = "pointer";
             container.appendChild(imgContainer);
         }
         if (mediaData.video) {
@@ -50,13 +52,30 @@ function photographerMediasfactory(mediaData, folderName) {
         mediaTextContainer.appendChild(titleContainer);
         mediaTextContainer.appendChild(numberOfLikes)
 
-
-        /* displayphotographerMediaImg.src = `assets/sample_photos/tracy/${mediaData.image}` */
         return container
     }
 
     function createLightBoxHTML() {
         const container = document.createElement("div");
+        if (mediaData.image) {
+            const imgContainer = document.createElement("img");
+            imgContainer.setAttribute("src", linkmedias);
+            imgContainer.setAttribute("data-id", mediaData.id)
+            imgContainer.classList.add("img-media");
+            imgContainer.classList.add("media-lightbox")
+            container.appendChild(imgContainer);
+
+        }
+        if (mediaData.video) {
+            const videoContainer = document.createElement("video");
+            videoContainer.setAttribute("src", linkvideos);
+            videoContainer.setAttribute("controls", linkvideos);
+            videoContainer.setAttribute("data-id", mediaData.id)
+            videoContainer.classList.add("video-media");
+            videoContainer.classList.add("media-lightbox")
+            container.appendChild(videoContainer);
+        }
+        return container
 
     }
     return { createhtml: createHTML, imageUrl: linkmedias, videoUrl: linkvideos, createLightBoxHTML }
@@ -67,30 +86,26 @@ async function displayPhotographerMedias(photographerID) {
 
     const mediasData = await getPhotographerMedias(photographerID)
     const containerMedias = document.getElementById("photographer-medias")
-
     const photographerData = await getPhotographer(photographerID);
     console.log("photographerData = ", photographerData)
 
     mediasData.forEach((media) => {
-
         const mediaModel = photographerMediasfactory(media, photographerID)
         const htmlMedia = mediaModel.createhtml()
         containerMedias.appendChild(htmlMedia)
-
     });
-    function displayMediaLightBox() {
 
-        const container = document.createElement("div");
-        container.innerHTML = "lightboxcontent"
-        /* boucle sur tout les médias et ajouter les médias dans le container*/
+    function displayMediaLightBox() {
+        const container = document.getElementById('img-arrow-container')
+
+        /* boucle sur tout les médias et ajoute les médias dans le container*/
+
         mediasData.forEach((media) => {
 
-            const mediaModel = photographerMediasfactory(media, photographerID);
-            const htmlMedia = mediaModel.createLightBoxHTML();
-            container.appendChild(htmlMedia);
-
+            const mediaModel = photographerMediasfactory(media, photographerID)
+            const htmlMedia = mediaModel.createLightBoxHTML()
+            container.appendChild(htmlMedia)
         });
-
         return container
     }
 
