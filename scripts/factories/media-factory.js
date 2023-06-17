@@ -30,8 +30,47 @@ function photographerMediasfactory(mediaData, folderName) {
         mediaTextContainer.setAttribute("class", "media-text-container")
         const titleContainer = document.createElement("h2");
         titleContainer.innerHTML = mediaData.title;
-        const numberOfLikes = document.createElement("p");
-        numberOfLikes.innerHTML = mediaData.likes + " ♥ ";
+        let numberOfLikes = document.createElement("p");
+        numberOfLikes.classList.add('likes')
+        numberOfLikes.innerHTML = mediaData.likes;
+        let heartLike = document.createElement("p");
+        heartLike.innerHTML = " ♡ ";
+        heartLike.classList.add("heart-like")
+        heartLike.style.cursor = "pointer"
+        let liked = false;
+        /* heartLike.addEventListener("click", function () {
+            numberOfLikes.innerHTML = mediaData.likes + 1;
+            heartLike.innerHTML = " ♥ ";
+            liked = true;
+            if (liked) {
+                heartLike.addEventListener('click', function () {
+                    numberOfLikes.innerHTML = mediaData.likes + 1 - 1;
+                    heartLike.innerHTML = " ♡ ";
+                    liked = false;
+                });
+            } else if (liked === false) {
+                numberOfLikes.innerHTML = mediaData.likes + 1;
+                heartLike.innerHTML = " ♥ ";
+                liked = true;
+            }
+        }); */
+        function likeClick() {
+            if (!liked) {
+                numberOfLikes.innerHTML++
+                liked = true;
+                heartLike.innerHTML = " ♥ ";
+
+            } else if (liked) {
+                numberOfLikes.innerHTML--
+                liked = false;
+                heartLike.innerHTML = " ♡ ";
+
+            }
+        }
+
+        heartLike.addEventListener('click', likeClick)
+
+
 
         if (mediaData.image) {
             const imgContainer = document.createElement("img");
@@ -46,11 +85,13 @@ function photographerMediasfactory(mediaData, folderName) {
             videoContainer.setAttribute("src", linkvideos);
             videoContainer.setAttribute("controls", linkvideos);
             videoContainer.classList.add("video-media");
+            videoContainer.style.cursor = "pointer";
             container.appendChild(videoContainer);
         }
         container.appendChild(mediaTextContainer)
         mediaTextContainer.appendChild(titleContainer);
-        mediaTextContainer.appendChild(numberOfLikes)
+        mediaTextContainer.appendChild(numberOfLikes);
+        mediaTextContainer.appendChild(heartLike);
 
         return container
     }
@@ -63,7 +104,13 @@ function photographerMediasfactory(mediaData, folderName) {
             imgContainer.setAttribute("data-id", mediaData.id)
             imgContainer.classList.add("img-media");
             imgContainer.classList.add("media-lightbox")
+            const titleContainer = document.createElement("h2");
+            titleContainer.classList.add("title-lightbox");
+            titleContainer.setAttribute("data-id", mediaData.id)
+            titleContainer.innerHTML = mediaData.title;
             container.appendChild(imgContainer);
+            container.appendChild(titleContainer)
+
 
         }
         if (mediaData.video) {
@@ -73,6 +120,8 @@ function photographerMediasfactory(mediaData, folderName) {
             videoContainer.setAttribute("data-id", mediaData.id)
             videoContainer.classList.add("video-media");
             videoContainer.classList.add("media-lightbox")
+            videoContainer.style.cursor = "pointer";
+
             container.appendChild(videoContainer);
         }
         return container
@@ -96,7 +145,7 @@ async function displayPhotographerMedias(photographerID) {
     });
 
     function displayMediaLightBox() {
-        const container = document.getElementById('img-arrow-container')
+        const container = document.getElementById('img-container')
 
         /* boucle sur tout les médias et ajoute les médias dans le container*/
 

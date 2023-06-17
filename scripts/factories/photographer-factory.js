@@ -79,3 +79,10 @@ async function getPhotographer(id) {
         console.log(error);
     }
 }
+// creer une fonction likes
+/* likes.addEventListener('click', function () {
+    console.log("hello")
+}) */
+// appeler cette fonction like au clique sur le bouton
+// incrémenter le nombres de like au nombre de like sur le photographe
+// vérifier que l'utilisateur (garder un tableau de toute les images qui ont été liké)

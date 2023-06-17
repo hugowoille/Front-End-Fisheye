@@ -74,8 +74,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 50px;
-    gap: 45px;
+    gap: 95px;
+
 }
+
+
 
 .media-container {
     width: 25%;
@@ -107,11 +110,22 @@
 
 .media-text-container h2 {
     font-weight: 400;
+    flex-grow: 1;
 }
 
 .media-text-container p {
     font-weight: 500;
     font-size: 24px;
+}
+
+.media-text-container .heart-like {
+    margin-left: 3px;
+    font-size: 36px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .photographer-price {
@@ -200,32 +214,50 @@
 
 #lightbox-content {
     border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    padding: 20px;
     margin: auto;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 0 50px;
 }
 
 .all-lightbox-btn {
     cursor: pointer;
     width: 30px;
     height: 50px;
+    position: absolute;
+}
+
+#close-lightbox-btn {
+    top: 0;
+    right: 10px;
+}
+
+#left-lightbox-btn {
+    left: 10px;
+
+}
+
+#right-lightbox-btn {
+    right: 10px;
+
 }
 
 #img-arrow-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
 }
 
-#right-lightbox-btn {
-    order: 3;
+.media-lightbox {
+    object-fit: cover;
+    width: 1050px;
+    height: 800px;
 }
