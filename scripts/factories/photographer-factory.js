@@ -3,6 +3,7 @@ function photographerFactory(data) {
     const { name, portrait, id, city, tagline, price } = data;
     const picture = `assets/photographers/${portrait}`;
 
+
     function getUserCardDOM() {
         const container = document.createElement("a");
         container.setAttribute("class", "card-DOM")
@@ -79,10 +80,51 @@ async function getPhotographer(id) {
         console.log(error);
     }
 }
-// creer une fonction likes
-/* likes.addEventListener('click', function () {
-    console.log("hello")
-}) */
-// appeler cette fonction like au clique sur le bouton
-// incrémenter le nombres de like au nombre de like sur le photographe
-// vérifier que l'utilisateur (garder un tableau de toute les images qui ont été liké)
+
+const dropDownBtn = document.getElementById('drop-down-btn')
+const dropDownMenu = document.querySelector('.filters')
+let dropDownClicked = false;
+
+function dropDown() {
+
+    if (!dropDownClicked) {
+
+        dropDownClicked = true;
+        dropDownMenu.style.opacity = "1";
+        dropDownBtn.style.transform = "rotateX(180deg)"
+        dropDownBtn.style.top = "27px"
+
+    } else if (dropDownClicked) {
+        dropDownClicked = false;
+        dropDownMenu.style.opacity = "0";
+        dropDownBtn.style.transform = "rotateX(0deg)"
+        dropDownBtn.style.top = "25px"
+    }
+}
+dropDownBtn.addEventListener('click', dropDown)
+
+const popularityFilter = document.getElementById('popularity-filter')
+const dateFilter = document.getElementById('date-filter')
+const titleFilter = document.getElementById('title-filter')
+
+let selectedFilter = document.getElementById("selected-filter")
+selectedFilter.innerHTML = popularityFilter.textContent
+
+const filterContainer = document.querySelector('.filter-container')
+const nodeListFilters = filterContainer.querySelectorAll("li")
+
+let filters = Array.from(nodeListFilters)
+
+
+filters.forEach((filter) => {
+    filter.addEventListener("click", pickSelectedFilter)
+})
+
+/* function pickSelectedFilter() {
+    selectedFilter.innerHTML = 
+} */
+
+
+
+
+

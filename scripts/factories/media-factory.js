@@ -10,6 +10,7 @@ async function getPhotographerMedias(photographerId) {
                 photographerMedias.push(element)
             }
         }
+
         return photographerMedias
     } catch (error) {
         console.log(error)
@@ -17,10 +18,12 @@ async function getPhotographerMedias(photographerId) {
 }
 
 
+
 function photographerMediasfactory(mediaData, folderName) {
     const folderPath = `assets/medias/${folderName}/`;
     const linkmedias = folderPath + mediaData.image;
     const linkvideos = folderPath + mediaData.video;
+
 
 
     function createHTML() {
@@ -38,37 +41,21 @@ function photographerMediasfactory(mediaData, folderName) {
         heartLike.classList.add("heart-like")
         heartLike.style.cursor = "pointer"
         let liked = false;
-        /* heartLike.addEventListener("click", function () {
-            numberOfLikes.innerHTML = mediaData.likes + 1;
-            heartLike.innerHTML = " ♥ ";
-            liked = true;
-            if (liked) {
-                heartLike.addEventListener('click', function () {
-                    numberOfLikes.innerHTML = mediaData.likes + 1 - 1;
-                    heartLike.innerHTML = " ♡ ";
-                    liked = false;
-                });
-            } else if (liked === false) {
-                numberOfLikes.innerHTML = mediaData.likes + 1;
-                heartLike.innerHTML = " ♥ ";
-                liked = true;
-            }
-        }); */
         function likeClick() {
             if (!liked) {
-                numberOfLikes.innerHTML++
+                numberOfLikes.innerHTML++;
                 liked = true;
                 heartLike.innerHTML = " ♥ ";
 
             } else if (liked) {
-                numberOfLikes.innerHTML--
+                numberOfLikes.innerHTML--;
                 liked = false;
                 heartLike.innerHTML = " ♡ ";
 
             }
         }
 
-        heartLike.addEventListener('click', likeClick)
+        heartLike.addEventListener('click', likeClick);
 
 
 
@@ -98,22 +85,16 @@ function photographerMediasfactory(mediaData, folderName) {
 
     function createLightBoxHTML() {
         const container = document.createElement("div");
+
         if (mediaData.image) {
             const imgContainer = document.createElement("img");
             imgContainer.setAttribute("src", linkmedias);
             imgContainer.setAttribute("data-id", mediaData.id)
             imgContainer.classList.add("img-media");
             imgContainer.classList.add("media-lightbox")
-            const titleContainer = document.createElement("h2");
-            titleContainer.classList.add("title-lightbox");
-            titleContainer.setAttribute("data-id", mediaData.id)
-            titleContainer.innerHTML = mediaData.title;
             container.appendChild(imgContainer);
-            container.appendChild(titleContainer)
-
-
         }
-        if (mediaData.video) {
+        else if (mediaData.video) {
             const videoContainer = document.createElement("video");
             videoContainer.setAttribute("src", linkvideos);
             videoContainer.setAttribute("controls", linkvideos);
@@ -121,9 +102,14 @@ function photographerMediasfactory(mediaData, folderName) {
             videoContainer.classList.add("video-media");
             videoContainer.classList.add("media-lightbox")
             videoContainer.style.cursor = "pointer";
-
             container.appendChild(videoContainer);
         }
+        const titleContainer = document.createElement("h2");
+        titleContainer.classList.add("title-media");
+        titleContainer.setAttribute("data-id", mediaData.id)
+        titleContainer.innerHTML = mediaData.title;
+        container.appendChild(titleContainer)
+
         return container
 
     }
@@ -163,7 +149,5 @@ async function displayPhotographerMedias(photographerID) {
     lightBoxContentContainer.appendChild(lightBoxContent);
 
 }
-
-
 
 
