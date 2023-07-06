@@ -103,26 +103,25 @@ function dropDown() {
 }
 dropDownBtn.addEventListener('click', dropDown)
 
-const popularityFilter = document.getElementById('popularity-filter')
-const dateFilter = document.getElementById('date-filter')
-const titleFilter = document.getElementById('title-filter')
-
-let selectedFilter = document.getElementById("selected-filter")
-selectedFilter.innerHTML = popularityFilter.textContent
-
-const filterContainer = document.querySelector('.filter-container')
-const nodeListFilters = filterContainer.querySelectorAll("li")
-
-let filters = Array.from(nodeListFilters)
 
 
-filters.forEach((filter) => {
-    filter.addEventListener("click", pickSelectedFilter)
-})
+async function getPhotographerMedias(photographerId) {
+    try {
+        const apiReponse = await fetch("./data/photographers.json")
+        const { media } = await apiReponse.json()
+        let photographerMedias = [];
+        for (let element of media) {
+            if (element.photographerId === photographerId) {
+                photographerMedias.push(element)
+            }
+        }
+        return photographerMedias
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-/* function pickSelectedFilter() {
-    selectedFilter.innerHTML = 
-} */
+
 
 
 

@@ -117,12 +117,43 @@ function photographerMediasfactory(mediaData, folderName) {
 
 }
 
-async function displayPhotographerMedias(photographerID) {
+async function displayPhotographerMedias(photographerID, sort = "popularity") {
 
-    const mediasData = await getPhotographerMedias(photographerID)
+    let mediasData = await getPhotographerMedias(photographerID)
+    /* fonction sort sur mediasData */
+    console.log("sort", sort)
+
+
+
+    if (sort === "popularity") {
+        const sortByPopularity = Array.from(mediasData)
+        sortByPopularity.sort(function (a, b) {
+            return a.likes - b.likes
+        })
+        mediasData = sortByPopularity;
+
+    } else if (sort === "date") {
+        const sortByDate = Array.from(mediasData)
+        sortByDate.sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date)
+        })
+        mediasData = sortByDate;
+    } else if (sort === "title") {
+        const sortByTitle = Array.from(mediasData)
+        sortByTitle.sort(function (a, b) {
+            if (a.title < b.title) //sort string ascending
+                return -1;
+            if (a.title > b.title)
+                return 1;
+            return 0; //default return value (no sorting)
+        })
+        mediasData = sortByTitle;
+
+    }
+
     const containerMedias = document.getElementById("photographer-medias")
-    const photographerData = await getPhotographer(photographerID);
-    console.log("photographerData = ", photographerData)
+    containerMedias.innerHTML = '';
+
 
     mediasData.forEach((media) => {
         const mediaModel = photographerMediasfactory(media, photographerID)
@@ -148,6 +179,10 @@ async function displayPhotographerMedias(photographerID) {
     const lightBoxContentContainer = document.getElementById('lightbox-content')
     lightBoxContentContainer.appendChild(lightBoxContent);
 
+
+
 }
+
+
 
 
