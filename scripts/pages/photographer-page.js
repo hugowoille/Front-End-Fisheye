@@ -11,54 +11,87 @@ async function init() {
     displayPhotographerMedias(photographerId);
     // filters
 
-
-    const popularityFilter = document.getElementById('popularity-filter')
-    popularityFilter.addEventListener('click', () => displayPhotographerMedias(photographerId, "popularity"))
-    const dateFilter = document.getElementById('date-filter')
-    dateFilter.addEventListener('click', () => displayPhotographerMedias(photographerId, "date"))
+    let selectedFilter = document.getElementById('selected-filter')
     const titleFilter = document.getElementById('title-filter')
-    titleFilter.addEventListener('click', () => displayPhotographerMedias(photographerId, "title"))
+    const dateFilter = document.getElementById('date-filter')
+    const popularityFilter = document.getElementById('popularity-filter')
 
-    const selectedFilter = document.getElementById('selected-filter')
+
+    popularityFilter.addEventListener('click', () => displayPhotographerMedias(photographerId, "popularity"))
+    popularityFilter.addEventListener('click', popularityIsSelected)
+
+
+    dateFilter.addEventListener('click', () => displayPhotographerMedias(photographerId, "date"))
+    dateFilter.addEventListener('click', dateIsSelected)
+
+    titleFilter.addEventListener('click', () => {
+        displayPhotographerMedias(photographerId, "title");
+        titleIsSelected();
+    });
+   
+
+
     selectedFilter.textContent = popularityFilter.textContent
-    if (selectedFilter.textContent === popularityFilter.textContent) {
+    popularityFilter.style.display = "none"
+
+    separate = document.querySelector(".separate")
+
+    function popularityIsSelected() {
+        selectedFilter.textContent = popularityFilter.textContent
         popularityFilter.style.display = "none"
         dateFilter.style.display = "block"
         titleFilter.style.display = "block"
-    } else if (selectedFilter.textContent === dateFilter.textContent) {
-        popularityFilter.style.display = "block"
-        dateFilter.style.display = "none"
-        titleFilter.style.display = "block"
-    } else if (selectedFilter.textContent === titleFilter.textContent) {
-        popularityFilter.style.display = "block"
-        dateFilter.style.display = "block"
-        titleFilter.style.display = "none"
+        dropDownMenu.style.opacity = "0"
+        dropDownClicked = false;
+        titleFilter.style.order = "0"
+        separate.style.order = "1"
+        dateFilter.style.order = " 2"
+
     }
 
+    function dateIsSelected() {
+        selectedFilter.textContent = dateFilter.textContent
+        popularityFilter.style.display = "block"
+        titleFilter.style.display = "block"
+        dateFilter.style.display = "none"
+        dropDownMenu.style.opacity = "0"
+        dropDownClicked = false;
+        separate.style.order = "1"
+        popularityFilter.style.order = "0"
+        titleFilter.style.order = "2"
 
+    }
 
+    function titleIsSelected() {
+        selectedFilter.textContent = titleFilter.textContent
+        popularityFilter.style.display = "block"
+        dateFilter.style.display = "block"
+        dateFilter.style.order = " 1"
+        titleFilter.style.display = "none"
+        dropDownMenu.style.opacity = "0"
+        dropDownClicked = false;
+        separate.style.order = "0"
+    }
 
+    function functionUpdateSortFilters(filterName) {
+
+    }
 
 }
 
 function displayPhotographerItems(photographerData) {
-
     const photographer = photographerFactory(photographerData)
     photographer.getPhotographerDOM("photographer-container");
-
 }
 
 
 // récupère l'id dans l'url
 
 function getUrlId() {
-
     const searchParams = window.location.search;
     const UrlSearchParams = new URLSearchParams(searchParams);
     const photographerId = UrlSearchParams.get("id");
-
     return Number(photographerId);
-
 }
 
 

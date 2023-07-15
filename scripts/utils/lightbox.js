@@ -6,11 +6,13 @@ let lightBoxRight;
 let leftClickListener;
 let lightBoxLeft;
 
+
 function displayLightbox(id) {
 
     const lightbox = document.getElementById("lightbox");
     lightbox.style.display = "block";
-
+   
+   
     /* masque les images de la lightbox */
 
     const mediaLightBox = document.querySelectorAll('.media-lightbox')
@@ -44,18 +46,17 @@ function displayLightbox(id) {
         selectedTitle.style.display = "none";
 
 
-        console.group()
-        console.log("id", id, "selected img", selectedImg);
+        
 
         if (selectedImg.parentElement.nextSibling === null) {
             selectedImg = imgContent[0];
             selectedTitle = titleContent[0];
-            console.log("end of list")
+            
 
         } else {
             const nextImg = selectedImg.parentElement.nextSibling.childNodes[0];
             const nextTitle = selectedImg.parentElement.nextSibling.childNodes[1];
-            console.log("parent element", selectedImg.parentElement, "next sibling", selectedImg.parentElement.nextSibling)
+            
             selectedTitle = nextTitle;
             selectedImg = nextImg;
         }
@@ -102,6 +103,15 @@ function closeLightbox() {
 
 }
 
-
-
+$(document).keydown(function(e) {
+    const keyCode = e.keyCode ? e.keyCode : e.which
+  
+    if (keyCode === 39) {
+        rightClickListener()
+    } else if (keyCode === 37) {
+        leftClickListener()
+    } else if (keyCode === 27){
+        closeLightbox()
+    }
+ })
 

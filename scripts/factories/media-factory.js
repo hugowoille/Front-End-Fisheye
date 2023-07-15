@@ -10,7 +10,6 @@ async function getPhotographerMedias(photographerId) {
                 photographerMedias.push(element)
             }
         }
-
         return photographerMedias
     } catch (error) {
         console.log(error)
@@ -128,13 +127,15 @@ async function displayPhotographerMedias(photographerID, sort = "popularity") {
     if (sort === "popularity") {
         const sortByPopularity = Array.from(mediasData)
         sortByPopularity.sort(function (a, b) {
-            return a.likes - b.likes
+            return b.likes - a.likes
         })
         mediasData = sortByPopularity;
 
     } else if (sort === "date") {
         const sortByDate = Array.from(mediasData)
         sortByDate.sort(function (a, b) {
+            dateNew = new Date(a.date)
+            console.log("dateNew", dateNew)
             return new Date(b.date) - new Date(a.date)
         })
         mediasData = sortByDate;
@@ -145,7 +146,6 @@ async function displayPhotographerMedias(photographerID, sort = "popularity") {
                 return -1;
             if (a.title > b.title)
                 return 1;
-            return 0; //default return value (no sorting)
         })
         mediasData = sortByTitle;
 
