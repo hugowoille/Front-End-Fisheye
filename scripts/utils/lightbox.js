@@ -100,7 +100,7 @@ function closeLightbox() {
 
 // using keyboard arrow to navigate in lightbox
 
-$(document).keydown(function (e) {
+/* document.keydown(function (e) {
   const keyCode = e.keyCode ? e.keyCode : e.which;
 
   if (keyCode === 39) {
@@ -109,5 +109,17 @@ $(document).keydown(function (e) {
     leftClickListener();
   } else if (keyCode === 27) {
     closeLightbox();
+  }
+}); */
+
+document.addEventListener("keydown", (event) => {
+  const lightbox = document.getElementById("lightbox");
+
+  if (lightbox.style.display !== "block") {
+    return;
+  }
+
+  if (event.code === "ArrowRight") {
+    rightClickListener();
   }
 });

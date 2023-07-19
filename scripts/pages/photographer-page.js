@@ -8,6 +8,7 @@ async function init() {
   // étape 3 display le photographe
   displayPhotographerItems(photographerData);
   displayPhotographerMedias(photographerId);
+  displayTotalLikes(photographerId);
 
   // filters
 
@@ -107,6 +108,73 @@ function getUrlId() {
   const UrlSearchParams = new URLSearchParams(searchParams);
   const photographerId = UrlSearchParams.get("id");
   return Number(photographerId);
+}
+
+async function displayPhotographerMedias(photographerID, sort = "popularity") {
+  let mediasData = await getPhotographerMedias(photographerID);
+
+  /* fonction sort sur mediasData */
+
+  if (sort === "popularity") {
+    const sortByPopularity = Array.from(mediasData);
+    sortByPopularity.sort(function (a, b) {
+      return b.likes - a.likes;
+    });
+    mediasData = sortByPopularity;
+  } else if (sort === "date") {
+    const sortByDate = Array.from(mediasData);
+    sortByDate.sort(function (a, b) {
+      dateNew = new Date(a.date);
+      console.log("dateNew", dateNew);
+      return new Date(b.date) - new Date(a.date);
+    });
+    mediasData = sortByDate;
+  } else if (sort === "title") {
+    const sortByTitle = Array.from(mediasData);
+    sortByTitle.sort(function (a, b) {
+      if (a.title < b.title)
+        //sort string ascending
+        return -1;
+      if (a.title > b.title) return 1;
+    });
+    mediasData = sortByTitle;
+  }
+
+  const containerMedias = document.getElementById("photographer-medias");
+  containerMedias.innerHTML = "";
+
+  mediasData.forEach((media) => {
+    const mediaModel = photographerMediasfactory(media, photographerID);
+    const htmlMedia = mediaModel.createhtml();
+    containerMedias.appendChild(htmlMedia);
+  });
+
+  function displayMediaLightBox() {
+    const container = document.getElementById("img-container");
+
+    /* boucle sur tout les médias et ajoute les médias dans le container*/
+
+    mediasData.forEach((media) => {
+      const mediaModel = photographerMediasfactory(media, photographerID);
+      const htmlMedia = mediaModel.createLightBoxHTML();
+      container.appendChild(htmlMedia);
+    });
+    return container;
+  }
+
+  const lightBoxContent = displayMediaLightBox();
+  const lightBoxContentContainer = document.getElementById("lightbox-content");
+  lightBoxContentContainer.appendChild(lightBoxContent);
+}
+
+async function displayTotalLikes(photographerId) {
+  let mediasData = await getPhotographerMedias(photographerId);
+  let totalLikes = 0;
+
+  mediasData.forEach((media) => {
+    totalLikes += media.likes;
+  });
+  console.log("totalLikes", totalLikes);
 }
 
 init();

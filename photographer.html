@@ -1,119 +1,137 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
+  </head>
 
-<head>
+  <body>
+    <!-- header -->
 
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+    <header>
+      <a href="index.html" aria-label="page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye" />
+      </a>
+    </header>
 
-</head>
+    <!-- main -->
 
-<body>
-
-  <!-- header -->
-
-  <header>
-    <a href="index.html" aria-label="page d'accueil">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye" />
-    </a>
-  </header>
-
-  <!-- main -->
-
-  <main id="main">
-
-    <div id="photographer-container" class="photographer-header">
-      <div class="photographer-infos">
-        <h1 class="photographer-name">
-        </h1>
-        <h2>
-          <div class="photographer-location"></div>
-          <p class="photographer-tagline"></p>
-        </h2>
+    <main id="main">
+      <div id="photographer-container" class="photographer-header">
+        <div class="photographer-infos">
+          <h1 class="photographer-name"></h1>
+          <h2>
+            <div class="photographer-location"></div>
+            <p class="photographer-tagline"></p>
+          </h2>
+        </div>
+        <div class="flex-button">
+          <button
+            class="contact_button"
+            onclick="displayModal()"
+            aria-label="Ouvre le formulaire de contact"
+          >
+            Contactez-moi
+          </button>
+        </div>
+        <figure class="flex-img">
+          <img class="photographer-picture" />
+        </figure>
+        <div class="photographer-price"></div>
       </div>
-      <div class="flex-button">
-        <button class="contact_button" onclick="displayModal()"
-          aria-label="Ouvre le formulaire de contact">Contactez-moi
-        </button>
+      <div class="filter-container">
+        <p class="filter-by">Trier par :</p>
+        <p id="selected-filter"></p>
+        <img id="drop-down-btn" src="assets/icons/dropdown.png" alt="" />
+        <ul class="filters">
+          <li id="popularity-filter">Popularité</li>
+          <!-- <div class="separate"></div> -->
+          <li id="date-filter">Date</li>
+          <div class="separate"></div>
+
+          <li id="title-filter">Titre</li>
+        </ul>
       </div>
-      <figure class="flex-img">
-        <img class="photographer-picture">
-      </figure>
-      <div class="photographer-price"></div>
+
+      <section id="photographer-medias"></section>
+    </main>
+
+    <!-- modal -->
+
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
+          <h2>Contactez-moi</h2>
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            alt="ferme le formulaire"
+          />
+        </header>
+        <form id="form-signup">
+          <label for="firstname">Prénom : </label>
+          <input type="text" id="firstname" aria-label="entrez votre prénom" />
+
+          <label for="lastname">Nom : </label>
+          <input type="text" id="lastname" aria-label="entrez votre nom" />
+
+          <label for="email">Email : </label>
+          <input
+            type="text"
+            id="email"
+            aria-label="entrez votre email"
+            placeholder="exemple@email.com"
+          />
+
+          <label for="message">Votre message : </label>
+          <input type="text" id="message" aria-label="entrez votre message" />
+
+          <button
+            class="contact_button"
+            type="submit"
+            aria-label="envoi votre message"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="filter-container">
-      <p class="filter-by">Trier par :</p>
-      <p id="selected-filter"></p>
-      <img id="drop-down-btn" src="assets/icons/dropdown.png" alt="">
-      <ul class="filters">
 
-        <li id="popularity-filter">Popularité</li>
-        <!-- <div class="separate"></div> -->
-        <li id="date-filter">Date</li>
-        <div class="separate"></div>
+    <!-- modal -->
 
-        <li id="title-filter">Titre</li>
-      </ul>
+    <div id="lightbox">
+      <div id="lightbox-content">
+        <img
+          id="close-lightbox-btn"
+          class="all-lightbox-btn"
+          src="assets/icons/close.svg"
+          onclick="closeLightbox()"
+          alt="ferme la lightbox"
+        />
+        <img
+          id="left-lightbox-btn"
+          class="all-lightbox-btn"
+          src="assets/icons/left.svg"
+        />
+        <div id="img-container"></div>
+        <img
+          id="right-lightbox-btn"
+          class="all-lightbox-btn"
+          src="assets/icons/right.svg"
+        />
+      </div>
     </div>
-
-    <section id="photographer-medias">
-    </section>
-
-  </main>
-
-  <!-- modal -->
-
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="ferme le formulaire" />
-      </header>
-      <form id="form-signup">
-
-        <label for="firstname">Prénom : </label>
-        <input type="text" id="firstname" aria-label="entrez votre prénom" />
-
-        <label for="lastname">Nom : </label>
-        <input type="text" id="lastname" aria-label="entrez votre nom" />
-
-        <label for="email">Email : </label>
-        <input type="text" id="email" aria-label="entrez votre email" placeholder="exemple@email.com" />
-
-        <label for="message">Votre message : </label>
-        <input type="text" id="message" aria-label="entrez votre message" />
-
-        <button class="contact_button" type="submit" aria-label="envoi votre message">Envoyer</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- modal -->
-
-  <div id="lightbox">
-    <div id="lightbox-content">
-      <img id="close-lightbox-btn" class="all-lightbox-btn" src="assets/icons/close.svg" onclick="closeLightbox()"
-        alt="ferme la lightbox" />
-      <img id="left-lightbox-btn" class="all-lightbox-btn" src="assets/icons/left.svg">
-      <div id="img-container"></div>
-      <img id="right-lightbox-btn" class="all-lightbox-btn" src="assets/icons/right.svg">
-    </div>
-  </div>
-  <script
- src="https://code.jquery.com/jquery-3.5.1.js"
- integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
- crossorigin="anonymous"></script>
-  <script src="scripts/factories/media-factory.js"></script>
-  <script src="scripts/factories/photographer-factory.js"></script>
-  <script src="/scripts/pages/photographer-page.js"></script>
-  <script src="scripts/utils/contactForm.js"></script>
-  <script src="scripts/utils/lightbox.js"></script>
-  
-  
-</body>
-
+    <script src="scripts/factories/media-factory.js"></script>
+    <script src="scripts/factories/photographer-factory.js"></script>
+    <script src="/scripts/pages/photographer-page.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
+  </body>
 </html>
