@@ -100,26 +100,26 @@ function closeLightbox() {
 
 // using keyboard arrow to navigate in lightbox
 
-/* document.keydown(function (e) {
-  const keyCode = e.keyCode ? e.keyCode : e.which;
-
-  if (keyCode === 39) {
-    rightClickListener();
-  } else if (keyCode === 37) {
-    leftClickListener();
-  } else if (keyCode === 27) {
-    closeLightbox();
-  }
-}); */
-
 document.addEventListener("keydown", (event) => {
   const lightbox = document.getElementById("lightbox");
 
   if (lightbox.style.display !== "block") {
     return;
   }
-
-  if (event.code === "ArrowRight") {
-    rightClickListener();
+  switch (event.code) {
+    case "ArrowRight": {
+      rightClickListener();
+      break;
+    }
+    case "ArrowLeft": {
+      leftClickListener();
+      break;
+    }
+    case "Escape": {
+      closeLightbox();
+      break;
+    }
+    default:
+      break;
   }
 });

@@ -66,7 +66,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-
 }
 
 .card-h2,
@@ -80,6 +79,8 @@ h1 {
 .card-h2 {
     color: #D3573C;
     font-size: 36px;
+    display: flex;
+    text-align: center;
 }
 
 .card-location {

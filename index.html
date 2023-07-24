@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye</title>
+  </head>
 
-<head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye</title>
-</head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye"
+          aria-label="lien vers la page d'accueil"
+        />
+      </a>
+      <h1>Nos photographes</h1>
+    </header>
+    <main id="main">
+      <section class="photographer_section-index"></section>
+    </main>
 
-<body>
-  <header>
-    <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye" aria-label="lien vers la page d'accueil" />
-    </a>
-    <h1>Nos photographes</h1>
-  </header>
-  <main id="main">
-    <section class="photographer_section-index"></section>
-  </main>
-
-  <script src="scripts/factories/media.js"></script>
-  <script src="scripts/factories/photographer-factory.js"></script>
-  <script src="scripts/pages/index.js"></script>
-
-</body>
-
+    <script src="scripts/factories/photographer-factory.js"></script>
+    <script src="scripts/pages/index.js"></script>
+  </body>
 </html>

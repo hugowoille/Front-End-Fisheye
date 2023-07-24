@@ -1,4 +1,5 @@
 // eslint-disable-next-line no-unused-vars
+
 function photographerFactory(data) {
   const { name, portrait, id, city, tagline, price } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -42,14 +43,16 @@ function photographerFactory(data) {
 
     return container;
   }
-  function getPhotographerDOM(containerID) {
+  async function getPhotographerDOM(containerID) {
     const container = document.getElementById(containerID);
+    const totalLikes = await displayTotalLikes(id);
     container.querySelector(".photographer-name").innerHTML = name;
     container.querySelector(".photographer-location").innerHTML = city;
     container.querySelector(".photographer-tagline").innerHTML = tagline;
     container.querySelector(".photographer-picture").src = picture;
-    container.querySelector(".photographer-price").innerText =
-      price + "€ / jour";
+    container.querySelector(
+      ".photographer-price"
+    ).innerHTML = ` <p> ♥ ${totalLikes} - ${price} € / jour </p>`;
   }
 
   return { name, picture, getUserCardDOM, getPhotographerDOM };
@@ -74,4 +77,13 @@ async function getPhotographer(id) {
   } catch (error) {
     console.log(error);
   }
+}
+async function displayTotalLikes(photographerId) {
+  let mediasData = await getPhotographerMedias(photographerId);
+  let totalLikes = 0;
+
+  mediasData.forEach((media) => {
+    totalLikes += media.likes;
+  });
+  return totalLikes;
 }

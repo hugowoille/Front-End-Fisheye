@@ -9,7 +9,6 @@ async function init() {
   displayPhotographerItems(photographerData);
   displayPhotographerMedias(photographerId);
   displayTotalLikes(photographerId);
-
   // filters
 
   let selectedFilter = document.getElementById("selected-filter");
@@ -165,16 +164,6 @@ async function displayPhotographerMedias(photographerID, sort = "popularity") {
   const lightBoxContent = displayMediaLightBox();
   const lightBoxContentContainer = document.getElementById("lightbox-content");
   lightBoxContentContainer.appendChild(lightBoxContent);
-}
-
-async function displayTotalLikes(photographerId) {
-  let mediasData = await getPhotographerMedias(photographerId);
-  let totalLikes = 0;
-
-  mediasData.forEach((media) => {
-    totalLikes += media.likes;
-  });
-  console.log("totalLikes", totalLikes);
 }
 
 init();
