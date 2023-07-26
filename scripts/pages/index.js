@@ -1,6 +1,17 @@
+async function getPhotographers() {
+    try {
+        const apiReponse = await fetch("./data/photographers.json");
+        const data = await apiReponse.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section-index");
+    const photographersSection = document.querySelector(
+        ".photographer_section-index"
+    );
 
     photographers.forEach((photographer) => {
         // eslint-disable-next-line no-undef
@@ -17,11 +28,3 @@ async function init() {
 }
 
 init();
-
-
-
-
-
-
-
-

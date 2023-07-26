@@ -37,7 +37,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .contact_button {
@@ -95,8 +94,6 @@
     left: 220px;
     cursor: pointer;
     transition: all 0.5s;
-
-
 }
 
 .filters {
@@ -116,7 +113,6 @@
     left: 60px;
     top: 60px;
     opacity: 0;
-
 }
 
 .filter-container .filters li {
@@ -129,10 +125,7 @@
     height: 1px;
     width: 100%;
     background-color: white;
-
 }
-
-
 
 #photographer-medias {
     display: flex;
@@ -141,10 +134,7 @@
     justify-content: space-between;
     margin-top: 50px;
     gap: 95px;
-
 }
-
-
 
 .media-container {
     width: 25%;
@@ -187,12 +177,8 @@
 .media-text-container .heart-like {
     margin-left: 3px;
     font-size: 36px;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
+
 .photographer-price {
     position: fixed;
     bottom: 0;
