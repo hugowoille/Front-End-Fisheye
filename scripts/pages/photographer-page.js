@@ -10,6 +10,13 @@ async function getPhotographer(id) {
 		console.log(error);
 	}
 }
+
+/**
+ * get photographer medias
+ * @param {number} photographerId ID of the photographer
+ * @returns return photographer media
+ */
+
 async function getPhotographerMedias(photographerId) {
 	try {
 		const apiReponse = await fetch("./data/photographers.json");
@@ -28,7 +35,6 @@ async function getPhotographerMedias(photographerId) {
 async function displayTotalLikes(photographerId) {
 	let mediasData = await getPhotographerMedias(photographerId);
 	let totalLikes = 0;
-
 	mediasData.forEach((media) => {
 		totalLikes += media.likes;
 	});
@@ -36,20 +42,19 @@ async function displayTotalLikes(photographerId) {
 }
 //Mettre le code JavaScript lié à la page photographer.html
 async function init() {
-	// étape 1 récupérer l'id dans l'url
 	const photographerId = getUrlId();
-	// étape 2 Fetch le fichier jSon et return le photographe qui a l'ID en question
 	const photographerData = await getPhotographer(photographerId);
-	// étape 3 display le photographe
+
 	displayPhotographerItems(photographerData);
 	displayPhotographerMedias(photographerId);
 	displayTotalLikes(photographerId);
-	// filters
+
 	let selectedFilter = document.getElementById("selected-filter");
 	const titleFilter = document.getElementById("title-filter");
 	const dateFilter = document.getElementById("date-filter");
 	const popularityFilter = document.getElementById("popularity-filter");
 
+	// listen to click event on filters
 	popularityFilter.addEventListener("click", () =>
 		displayPhotographerMedias(photographerId, "popularity")
 	);

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
-	const { name, portrait, id, city, tagline, price } = data;
+	const { name, portrait, id, city, tagline, price } = data; // à quel moment j'ai injecté mes datas dedans ?
 	const picture = `assets/photographers/${portrait}`;
 
 	function getUserCardDOM() {

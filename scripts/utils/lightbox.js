@@ -11,14 +11,12 @@ function displayLightbox(id) {
 	lightbox.style.display = "block";
 
 	// hides images from lightbox
-
 	const mediaLightBox = document.querySelectorAll(".media-lightbox");
 	mediaLightBox.forEach((media) => {
 		media.style.display = "none";
 	});
 
 	// hide title of images from lightbox
-
 	const titleLightBox = document.querySelectorAll(".title-media");
 	titleLightBox.forEach((title) => {
 		title.style.display = "none";
@@ -31,7 +29,6 @@ function displayLightbox(id) {
 	selectedTitle.style.display = "block";
 
 	// lightbox right button
-
 	lightBoxRight = document.getElementById("right-lightbox-btn");
 	rightClickListener = function () {
 		const imgContent = document.querySelectorAll(
@@ -59,7 +56,6 @@ function displayLightbox(id) {
 	lightBoxRight.addEventListener("click", rightClickListener);
 
 	// lighbox left button
-
 	lightBoxLeft = document.getElementById("left-lightbox-btn");
 	leftClickListener = function () {
 		const imgContent = document.querySelectorAll(
@@ -92,7 +88,6 @@ function displayLightbox(id) {
 }
 
 // close lightbox
-
 function closeLightbox() {
 	const lightbox = document.getElementById("lightbox");
 	lightbox.style.display = "none";
@@ -102,7 +97,6 @@ function closeLightbox() {
 }
 
 // using keyboard arrow to navigate in lightbox
-
 document.addEventListener("keydown", (event) => {
 	const lightbox = document.getElementById("lightbox");
 
