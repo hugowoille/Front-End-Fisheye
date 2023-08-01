@@ -17,7 +17,11 @@
 
 		<header>
 			<a href="index.html" aria-label="page d'accueil">
-				<img src="assets/images/logo.png" class="logo" alt="Fisheye" />
+				<img
+					src="assets/images/logo.png"
+					class="logo"
+					alt="Logo de Fisheye"
+				/>
 			</a>
 		</header>
 
@@ -40,28 +44,30 @@
 					</button>
 				</div>
 				<figure class="flex-img">
-					<img
-						src=""
-						class="photographer-picture"
-						alt="image du photographe"
-					/>
+					<img src="" class="photographer-picture" />
 				</figure>
 				<div class="photographer-price"></div>
 			</div>
 			<div class="filter-container">
 				<p class="filter-by">Trier par :</p>
 				<p id="selected-filter"></p>
-				<img
+				<!-- <button
 					id="drop-down-btn"
 					src="assets/icons/dropdown.png"
 					alt="déroule le menu des filtres"
-				/>
+				/> -->
+				<button id="yoyoyo">
+					<img
+						id="drop-down-btn"
+						src="assets/icons/dropdown.png"
+						alt=""
+					/>
+				</button>
+
 				<ul class="filters">
 					<li id="popularity-filter">Popularité</li>
-
 					<li id="date-filter">Date</li>
 					<li class="separate"></li>
-
 					<li id="title-filter">Titre</li>
 				</ul>
 			</div>
@@ -122,7 +128,7 @@
 			</div>
 		</div>
 
-		<!-- modal -->
+		<!-- lightbox -->
 
 		<div id="lightbox">
 			<div id="lightbox-content">
@@ -131,20 +137,20 @@
 					class="all-lightbox-btn"
 					src="assets/icons/close.svg"
 					onclick="closeLightbox()"
-					alt="ferme la lightbox"
+					aria-label="ferme la lightbox"
 				/>
 				<img
 					id="left-lightbox-btn"
 					class="all-lightbox-btn"
 					src="assets/icons/left.svg"
-					alt="naviguer vers la gauche"
+					aria-label="naviguer vers la gauche"
 				/>
 				<div id="img-container"></div>
 				<img
 					id="right-lightbox-btn"
 					class="all-lightbox-btn"
 					src="assets/icons/right.svg"
-					alt="naviguer vers la droite"
+					aria-label="naviguer vers la droite"
 				/>
 			</div>
 		</div>

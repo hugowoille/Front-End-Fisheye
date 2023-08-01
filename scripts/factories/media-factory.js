@@ -14,20 +14,21 @@ function photographerMediasfactory(mediaData, folderName) {
 		let numberOfLikes = document.createElement("p");
 		numberOfLikes.classList.add("likes");
 		numberOfLikes.innerHTML = mediaData.likes;
-		let heartLike = document.createElement("p");
-		heartLike.innerHTML = " ♡ ";
+		let heartLike = document.createElement("img");
+		heartLike.src = "../../assets/icons/heart-regular.svg";
 		heartLike.classList.add("heart-like");
 		heartLike.style.cursor = "pointer";
+		heartLike.setAttribute("alt", "ajoute un like");
 		let liked = false;
 		function likeClick() {
 			if (!liked) {
 				numberOfLikes.innerHTML++;
 				liked = true;
-				heartLike.innerHTML = " ♥ ";
+				heartLike.src = "../../assets/icons/heart-solid.svg";
 			} else if (liked) {
 				numberOfLikes.innerHTML--;
 				liked = false;
-				heartLike.innerHTML = " ♡ ";
+				heartLike.src = "../../assets/icons/heart-regular.svg";
 			}
 		}
 
@@ -36,6 +37,7 @@ function photographerMediasfactory(mediaData, folderName) {
 		if (mediaData.image) {
 			const imgContainer = document.createElement("img");
 			imgContainer.setAttribute("src", linkmedias);
+			imgContainer.setAttribute("alt", mediaData.image);
 			imgContainer.addEventListener("click", function () {
 				// eslint-disable-next-line no-undef
 				displayLightbox(mediaData.id);
@@ -62,7 +64,6 @@ function photographerMediasfactory(mediaData, folderName) {
 
 	function createLightBoxHTML() {
 		const container = document.createElement("div");
-
 		if (mediaData.image) {
 			const imgContainer = document.createElement("img");
 			imgContainer.setAttribute("src", linkmedias);

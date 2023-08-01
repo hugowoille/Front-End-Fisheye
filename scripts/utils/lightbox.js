@@ -87,7 +87,6 @@ function displayLightbox(id) {
 	lightBoxLeft.addEventListener("click", leftClickListener);
 }
 
-// close lightbox
 function closeLightbox() {
 	const lightbox = document.getElementById("lightbox");
 	lightbox.style.display = "none";

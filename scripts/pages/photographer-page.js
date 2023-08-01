@@ -40,6 +40,7 @@ async function displayTotalLikes(photographerId) {
 	});
 	return totalLikes;
 }
+
 //Mettre le code JavaScript lié à la page photographer.html
 async function init() {
 	const photographerId = getUrlId();
@@ -136,7 +137,6 @@ function displayPhotographerItems(photographerData) {
 }
 
 // récupère l'id dans l'url
-
 function getUrlId() {
 	const searchParams = window.location.search;
 	const UrlSearchParams = new URLSearchParams(searchParams);
@@ -159,7 +159,6 @@ async function displayPhotographerMedias(photographerID, sort = "popularity") {
 		const sortByDate = Array.from(mediasData);
 		sortByDate.sort(function (a, b) {
 			dateNew = new Date(a.date);
-			console.log("dateNew", dateNew);
 			return new Date(b.date) - new Date(a.date);
 		});
 		mediasData = sortByDate;
@@ -187,7 +186,6 @@ async function displayPhotographerMedias(photographerID, sort = "popularity") {
 		const container = document.getElementById("img-container");
 
 		/* boucle sur tout les médias et ajoute les médias dans le container*/
-
 		mediasData.forEach((media) => {
 			const mediaModel = photographerMediasfactory(media, photographerID);
 			const htmlMedia = mediaModel.createLightBoxHTML();

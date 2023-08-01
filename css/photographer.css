@@ -1,3 +1,4 @@
+
 /* Photographer-header */
 
 #photographer-container {
@@ -31,12 +32,15 @@
     color: #525252
 }
 
-
-.flex-button {
-    width: 100%;
+.flex-img{
+    width:100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+.flex-button {
+    display: flex;
+    justify-content: center;
+    width:100%;
 }
 
 .contact_button {
@@ -50,6 +54,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.5s;
+}
+.contact_button:hover{
+    color:#000000;
+    background-color:#DB8876;
 }
 
 .photographer-picture {
@@ -86,7 +95,10 @@
     padding-left: 15px;
     margin-left: 20px;
 }
-
+#yoyoyo{
+    border:none;
+    background: none;
+}
 #drop-down-btn {
     width: 25px;
     position: absolute;
@@ -175,8 +187,15 @@
 }
 
 .media-text-container .heart-like {
-    margin-left: 3px;
-    font-size: 36px;
+    margin-left: 10px;
+    width:25px;
+    height:25px;
+    vertical-align: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    line-height: 20px;
+    color:#901C1C
 }
 
 .photographer-price {
@@ -186,8 +205,13 @@
     background: #DB8876;
     border-radius: 5px 5px 0 0;
     padding: 21px 34px;
+    display: flex;
 }
-
+.photographer-price img{
+    width:20px;
+    position: relative;
+    top:5px;
+}
 
 /* modal */
 
