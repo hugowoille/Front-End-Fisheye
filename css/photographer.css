@@ -95,7 +95,7 @@
     padding-left: 15px;
     margin-left: 20px;
 }
-#yoyoyo{
+#drop-down{
     border:none;
     background: none;
 }
@@ -227,7 +227,7 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 669px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -241,14 +241,14 @@
 }
 
 .modal header {
-    justify-content: space-between;
+    margin: 20px 0;
     width: 100%;
 }
 
 .modal header h2 {
     font-size: 50px;
     font-weight: normal;
-    text-align: center;
+    
 }
 
 .modal header img {

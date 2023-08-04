@@ -129,6 +129,11 @@ async function init() {
 		dropDownClicked = false;
 		separate.style.order = "0";
 	}
+	// écoute le bouton contact pour ouvrir la modal
+	const modalButton = document.getElementById("contact-button");
+	modalButton.addEventListener("click", () => {
+		displayModal(photographerData.name);
+	});
 }
 
 function displayPhotographerItems(photographerData) {

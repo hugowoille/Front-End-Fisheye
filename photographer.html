@@ -30,14 +30,14 @@
 		<main id="main">
 			<div id="photographer-container" class="photographer-header">
 				<div class="photographer-infos">
-					<h1 class="photographer-name"></h1>
+					<h1 id="photographer-name" class="photographer-name"></h1>
 					<div class="photographer-location"></div>
 					<p class="photographer-tagline"></p>
 				</div>
 				<div class="flex-button">
 					<button
 						class="contact_button"
-						onclick="displayModal()"
+						id="contact-button"
 						aria-label="Ouvre le formulaire de contact"
 					>
 						Contactez-moi
@@ -56,7 +56,7 @@
 					src="assets/icons/dropdown.png"
 					alt="déroule le menu des filtres"
 				/> -->
-				<button id="yoyoyo">
+				<button id="drop-down">
 					<img
 						id="drop-down-btn"
 						src="assets/icons/dropdown.png"
@@ -80,7 +80,7 @@
 		<div id="contact_modal">
 			<div class="modal">
 				<header>
-					<h2>Contactez-moi</h2>
+					<h2 id="contact-name"></h2>
 					<img
 						src="assets/icons/close.svg"
 						onclick="closeModal()"
@@ -111,11 +111,7 @@
 					/>
 
 					<label for="message">Votre message : </label>
-					<input
-						type="text"
-						id="message"
-						aria-label="entrez votre message"
-					/>
+					<input id="message" aria-label="entrez votre message" />
 
 					<button
 						class="contact_button"
