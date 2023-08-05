@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-function photographerMediasfactory(mediaData, folderName) {
-	const folderPath = `assets/medias/${folderName}/`;
+function photographerMediasfactory(mediaData, photographerId, price) {
+	const folderPath = `assets/medias/${photographerId}/`;
 	const linkmedias = folderPath + mediaData.image;
 	const linkvideos = folderPath + mediaData.video;
 
@@ -14,21 +14,36 @@ function photographerMediasfactory(mediaData, folderName) {
 		let numberOfLikes = document.createElement("p");
 		numberOfLikes.classList.add("likes");
 		numberOfLikes.innerHTML = mediaData.likes;
+		numberOfLikes.setAttribute("alt", `${mediaData.likes} Likes`);
+		numberOfLikes.setAttribute("aria-label", `${mediaData.likes} Likes`);
+
 		let heartLike = document.createElement("img");
 		heartLike.src = "../../assets/icons/heart-regular.svg";
 		heartLike.classList.add("heart-like");
 		heartLike.style.cursor = "pointer";
 		heartLike.setAttribute("alt", "ajoute un like");
 		let liked = false;
-		function likeClick() {
+		async function likeClick() {
+			// eslint-disable-next-line no-undef
+			let liketotaux = await displayTotalLikes(photographerId);
 			if (!liked) {
 				numberOfLikes.innerHTML++;
 				liked = true;
 				heartLike.src = "../../assets/icons/heart-solid.svg";
+				liketotaux++;
+				let likeTotauxPlus = document.querySelector(
+					".photographer-price"
+				);
+				likeTotauxPlus.innerHTML = `<p> ${liketotaux} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p> `;
 			} else if (liked) {
 				numberOfLikes.innerHTML--;
 				liked = false;
 				heartLike.src = "../../assets/icons/heart-regular.svg";
+				liketotaux + 1 - 1;
+				let likeTotauxMoins = document.querySelector(
+					".photographer-price"
+				);
+				likeTotauxMoins.innerHTML = `<p> ${liketotaux} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p> `;
 			}
 		}
 
@@ -37,7 +52,8 @@ function photographerMediasfactory(mediaData, folderName) {
 		if (mediaData.image) {
 			const imgContainer = document.createElement("img");
 			imgContainer.setAttribute("src", linkmedias);
-			imgContainer.setAttribute("alt", mediaData.image);
+			imgContainer.setAttribute("alt", mediaData.title);
+
 			imgContainer.addEventListener("click", function () {
 				// eslint-disable-next-line no-undef
 				displayLightbox(mediaData.id);

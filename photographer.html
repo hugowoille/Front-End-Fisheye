@@ -16,11 +16,12 @@
 		<!-- header -->
 
 		<header>
-			<a href="index.html" aria-label="page d'accueil">
+			<a href="index.html" aria-label="aller à la page d'accueil">
 				<img
 					src="assets/images/logo.png"
 					class="logo"
 					alt="Logo de Fisheye"
+					aria-label="aller à la page d'accueil"
 				/>
 			</a>
 		</header>
@@ -51,24 +52,28 @@
 			<div class="filter-container">
 				<p class="filter-by">Trier par :</p>
 				<p id="selected-filter"></p>
-				<!-- <button
-					id="drop-down-btn"
-					src="assets/icons/dropdown.png"
-					alt="déroule le menu des filtres"
-				/> -->
 				<button id="drop-down">
 					<img
 						id="drop-down-btn"
 						src="assets/icons/dropdown.png"
-						alt=""
+						aria-label="déroule le menu des filtres"
 					/>
 				</button>
 
 				<ul class="filters">
-					<li id="popularity-filter">Popularité</li>
-					<li id="date-filter">Date</li>
+					<li
+						id="popularity-filter"
+						aria-label="trier par popularité"
+						alt="trier par popularité"
+						aria-labelledby="trier par popularité"
+					>
+						Popularité
+					</li>
+					<li id="date-filter" aria-label="trier par date">Date</li>
 					<li class="separate"></li>
-					<li id="title-filter">Titre</li>
+					<li id="title-filter" aria-label="trier par titre">
+						Titre
+					</li>
 				</ul>
 			</div>
 

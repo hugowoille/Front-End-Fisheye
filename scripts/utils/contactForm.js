@@ -1,12 +1,14 @@
+// eslint-disable-next-line no-unused-vars
 function displayModal(name) {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
-	console.log("photographerName:", name);
+
 	document.getElementById(
 		"contact-name"
 	).innerHTML = `Contactez moi <br> ${name}`;
 }
 
+// eslint-disable-next-line no-unused-vars
 function closeModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "none";
