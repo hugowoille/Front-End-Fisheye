@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-function photographerMediasfactory(mediaData, photographerId, price) {
+function photographerMediasfactory(mediaData, photographerId) {
 	const folderPath = `assets/medias/${photographerId}/`;
 	const linkmedias = folderPath + mediaData.image;
 	const linkvideos = folderPath + mediaData.video;
+	let heartLikeElement;
 
 	function createHTML() {
 		const container = document.createElement("div");
@@ -15,39 +16,27 @@ function photographerMediasfactory(mediaData, photographerId, price) {
 		numberOfLikes.classList.add("likes");
 		numberOfLikes.innerHTML = mediaData.likes;
 		numberOfLikes.setAttribute("alt", `${mediaData.likes} Likes`);
-		numberOfLikes.setAttribute("aria-label", `${mediaData.likes} Likes`);
 
 		let heartLike = document.createElement("img");
 		heartLike.src = "../../assets/icons/heart-regular.svg";
 		heartLike.classList.add("heart-like");
 		heartLike.style.cursor = "pointer";
 		heartLike.setAttribute("alt", "ajoute un like");
+		heartLike.setAttribute("data-id", mediaData.id);
+		heartLikeElement = heartLike;
 		let liked = false;
-		async function likeClick() {
-			// eslint-disable-next-line no-undef
-			let liketotaux = await displayTotalLikes(photographerId);
-			if (!liked) {
-				numberOfLikes.innerHTML++;
-				liked = true;
-				heartLike.src = "../../assets/icons/heart-solid.svg";
-				liketotaux++;
-				let likeTotauxPlus = document.querySelector(
-					".photographer-price"
-				);
-				likeTotauxPlus.innerHTML = `<p> ${liketotaux} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p> `;
-			} else if (liked) {
-				numberOfLikes.innerHTML--;
-				liked = false;
-				heartLike.src = "../../assets/icons/heart-regular.svg";
-				liketotaux + 1 - 1;
-				let likeTotauxMoins = document.querySelector(
-					".photographer-price"
-				);
-				likeTotauxMoins.innerHTML = `<p> ${liketotaux} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p> `;
-			}
-		}
 
-		heartLike.addEventListener("click", likeClick);
+		heartLike.addEventListener("click", () => {
+			if (liked) {
+				displayHeart(false);
+				liked = false;
+				numberOfLikes.innerHTML = mediaData.likes -= 1;
+			} else {
+				displayHeart(true);
+				liked = true;
+				numberOfLikes.innerHTML = mediaData.likes += 1;
+			}
+		});
 
 		if (mediaData.image) {
 			const imgContainer = document.createElement("img");
@@ -76,6 +65,13 @@ function photographerMediasfactory(mediaData, photographerId, price) {
 		mediaTextContainer.appendChild(heartLike);
 
 		return container;
+	}
+	function displayHeart(isLiked = true) {
+		if (isLiked) {
+			heartLikeElement.src = "../../assets/icons/heart-solid.svg";
+		} else {
+			heartLikeElement.src = "../../assets/icons/heart-regular.svg";
+		}
 	}
 
 	function createLightBoxHTML() {
@@ -110,5 +106,6 @@ function photographerMediasfactory(mediaData, photographerId, price) {
 		imageUrl: linkmedias,
 		videoUrl: linkvideos,
 		createLightBoxHTML,
+		displayHeart,
 	};
 }

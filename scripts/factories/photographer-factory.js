@@ -1,8 +1,26 @@
 // eslint-disable-next-line no-unused-vars
-function photographerFactory(data) {
+function photographerFactory(data, initialTotalLike) {
 	const { name, portrait, id, city, tagline, price } = data;
 	const picture = `assets/photographers/${portrait}`;
+	let totalLike = initialTotalLike;
+	let likedMedias = [];
+	function likeMedia(mediaId) {
+		if (likedMedias.includes(mediaId)) {
+			totalLike -= 1;
+			likedMedias = likedMedias.filter(
+				(likedMediaId) => likedMediaId !== mediaId
+			);
+		} else {
+			totalLike += 1;
+			likedMedias.push(mediaId);
+		}
 
+		// Mettre à jour l'affichage du nombre total de likes
+		const totalLikesElement = document.querySelector(
+			".photographer-price p"
+		);
+		totalLikesElement.innerHTML = `  ${totalLike} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour  `;
+	}
 	function getUserCardDOM() {
 		const container = document.createElement("a");
 		container.setAttribute("class", "card-DOM");
@@ -45,7 +63,7 @@ function photographerFactory(data) {
 	async function getPhotographerDOM(containerID) {
 		const container = document.getElementById(containerID);
 		// eslint-disable-next-line no-undef
-		const totalLikes = await displayTotalLikes(id);
+		const totalLikes = await getTotalLikes(id);
 		container.querySelector(".photographer-name").innerHTML = name;
 		container.querySelector(".photographer-location").innerHTML = city;
 		container.querySelector(".photographer-tagline").innerHTML = tagline;
@@ -58,5 +76,12 @@ function photographerFactory(data) {
 			".photographer-price"
 		).innerHTML = ` <p>  ${totalLikes} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p>`;
 	}
-	return { name, picture, getUserCardDOM, getPhotographerDOM };
+	return {
+		name,
+		picture,
+		getUserCardDOM,
+		getPhotographerDOM,
+		totalLike,
+		likeMedia,
+	};
 }
