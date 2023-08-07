@@ -10,9 +10,11 @@ function photographerFactory(data, initialTotalLike) {
 			likedMedias = likedMedias.filter(
 				(likedMediaId) => likedMediaId !== mediaId
 			);
+			console.log("likedMedias:", likedMedias);
 		} else {
 			totalLike += 1;
 			likedMedias.push(mediaId);
+			console.log("likedMedias:", likedMedias);
 		}
 
 		// Mettre à jour l'affichage du nombre total de likes
