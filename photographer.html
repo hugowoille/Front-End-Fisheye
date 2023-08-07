@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<link href="css/photographer.css" rel="stylesheet" type="text/css" />
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="css/photographer.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8" >
+		<link rel="icon" type="image/png" href="assets/favicon.png">
 		<link
 			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
 			rel="stylesheet"
-		/>
+		>
 		<title>Fisheye - photographe</title>
 	</head>
 
@@ -20,9 +20,8 @@
 				<img
 					src="assets/images/logo.png"
 					class="logo"
-					alt="Logo de Fisheye"
-					aria-label="aller à la page d'accueil"
-				/>
+					alt="aller à la page d'accueil"
+				>
 			</a>
 		</header>
 
@@ -45,27 +44,24 @@
 					</button>
 				</div>
 				<figure class="flex-img">
-					<img src="" class="photographer-picture" />
+					<img src="" class="photographer-picture">
 				</figure>
 				<div class="photographer-price"></div>
 			</div>
 			<div class="filter-container">
 				<p class="filter-by">Trier par :</p>
 				<p id="selected-filter"></p>
-				<button id="drop-down" role="button" aria-hashpopup="listbox">
+				<button id="drop-down" role="button">
 					<img
 						id="drop-down-btn"
 						src="assets/icons/dropdown.png"
-						aria-label="déroule le menu des filtres"
-					/>
+						alt="déroule le menu des filtres"
+					>
 				</button>
-
 				<ul class="filters">
 					<li
 						id="popularity-filter"
-						aria-label="trier par popularité"
-						alt="trier par popularité"
-						aria-labelledby="trier par popularité"
+						aria-label="trier par popularité"	
 					>
 						Popularité
 					</li>
@@ -90,7 +86,7 @@
 						src="assets/icons/close.svg"
 						onclick="closeModal()"
 						alt="ferme le formulaire"
-					/>
+					>
 				</header>
 				<form id="form-signup">
 					<label for="firstname">Prénom : </label>
@@ -98,14 +94,14 @@
 						type="text"
 						id="firstname"
 						aria-label="entrez votre prénom"
-					/>
+					>
 
 					<label for="lastname">Nom : </label>
 					<input
 						type="text"
 						id="lastname"
 						aria-label="entrez votre nom"
-					/>
+					>
 
 					<label for="email">Email : </label>
 					<input
@@ -113,10 +109,10 @@
 						id="email"
 						aria-label="entrez votre email"
 						placeholder="exemple@email.com"
-					/>
+					>
 
 					<label for="message">Votre message : </label>
-					<input id="message" aria-label="entrez votre message" />
+					<input id="message" aria-label="entrez votre message">
 
 					<button
 						class="contact_button"
@@ -138,21 +134,21 @@
 					class="all-lightbox-btn"
 					src="assets/icons/close.svg"
 					onclick="closeLightbox()"
-					aria-label="ferme la lightbox"
-				/>
+					alt="ferme la lightbox"
+				>
 				<img
 					id="left-lightbox-btn"
 					class="all-lightbox-btn"
 					src="assets/icons/left.svg"
-					aria-label="naviguer vers la gauche"
-				/>
+					alt="naviguer vers la gauche"
+				>
 				<div id="img-container"></div>
 				<img
 					id="right-lightbox-btn"
 					class="all-lightbox-btn"
 					src="assets/icons/right.svg"
-					aria-label="naviguer vers la droite"
-				/>
+					alt="naviguer vers la droite"
+				>
 			</div>
 		</div>
 		<script src="scripts/factories/media-factory.js"></script>
