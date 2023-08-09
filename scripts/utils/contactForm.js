@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // eslint-disable-next-line no-unused-vars
 function displayModal(name) {
 	const modal = document.getElementById("contact_modal");
@@ -33,3 +34,23 @@ function validate(event) {
 	const getMessageValue = document.getElementById("message").value;
 	console.log("message :", getMessageValue);
 }
+// using keyboard to navigate in contact modal
+document.addEventListener("keydown", (event) => {
+	const contactModal = document.getElementById("contact_modal");
+
+	if (contactModal.style.display !== "block") {
+		return;
+	}
+	switch (event.code) {
+		case "Escape": {
+			closeModal();
+			break;
+		}
+		case "Enter": {
+			validate();
+			break;
+		}
+		default:
+			break;
+	}
+});

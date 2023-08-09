@@ -17,12 +17,14 @@ function photographerFactory(data, initialTotalLike) {
 			console.log("likedMedias:", likedMedias);
 		}
 
-		// Mettre à jour l'affichage du nombre total de likes
+		// Met à jour l'affichage du nombre total de likes
 		const totalLikesElement = document.querySelector(
 			".photographer-price p"
 		);
 		totalLikesElement.innerHTML = `  ${totalLike} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour  `;
 	}
+
+	// créé le profil d'un photographe sur la pas d'accueil
 	function getUserCardDOM() {
 		const container = document.createElement("a");
 		container.setAttribute("class", "card-DOM");
@@ -62,6 +64,8 @@ function photographerFactory(data, initialTotalLike) {
 
 		return container;
 	}
+
+	// créé l'entete d'un photographe sur sa page de profil
 	async function getPhotographerDOM(containerID) {
 		const container = document.getElementById(containerID);
 		// eslint-disable-next-line no-undef

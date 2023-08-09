@@ -17,6 +17,7 @@ function photographerMediasfactory(mediaData, photographerId) {
 		numberOfLikes.innerHTML = mediaData.likes;
 		numberOfLikes.setAttribute("alt", `${mediaData.likes} Likes`);
 
+		// gestion des likes (incrémentation et décrémentation)
 		let heartLike = document.createElement("img");
 		heartLike.src = "../../assets/icons/heart-regular.svg";
 		heartLike.classList.add("heart-like");
@@ -25,7 +26,6 @@ function photographerMediasfactory(mediaData, photographerId) {
 		heartLike.setAttribute("data-id", mediaData.id);
 		heartLikeElement = heartLike;
 		let liked = false;
-
 		heartLike.addEventListener("click", () => {
 			if (liked) {
 				displayHeart(false);

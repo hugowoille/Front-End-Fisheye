@@ -1,3 +1,11 @@
+// récupère l'id dans l'url
+function getUrlId() {
+	const searchParams = window.location.search;
+	const UrlSearchParams = new URLSearchParams(searchParams);
+	const photographerId = UrlSearchParams.get("id");
+	return Number(photographerId);
+}
+
 /* eslint-disable no-undef */
 async function getPhotographer(id) {
 	try {
@@ -33,14 +41,6 @@ async function getPhotographerMedias(photographerId) {
 	}
 }
 
-// récupère l'id dans l'url
-function getUrlId() {
-	const searchParams = window.location.search;
-	const UrlSearchParams = new URLSearchParams(searchParams);
-	const photographerId = UrlSearchParams.get("id");
-	return Number(photographerId);
-}
-
 function displayPhotographerItems(photographer) {
 	photographer.getPhotographerDOM("photographer-container");
 }
@@ -48,7 +48,7 @@ function displayPhotographerItems(photographer) {
 async function displayPhotographerMedias(photographerID, sort = "popularity") {
 	let mediasData = await getPhotographerMedias(photographerID);
 
-	/* fonction sort sur mediasData */
+	// les filtres
 
 	if (sort === "popularity") {
 		const sortByPopularity = Array.from(mediasData);
@@ -213,9 +213,6 @@ async function init() {
 	modalButton.addEventListener("click", () => {
 		displayModal(photographerData.name);
 	});
-	// écoute le bouton du clicksur le like
-
-	displayPhotographerMedias(photographerId);
 
 	// Ajoute un écouteur d'événement sur le conteneur des médias
 	const containerMedias = document.getElementById("photographer-medias");
