@@ -47,7 +47,7 @@ document.addEventListener("keydown", (event) => {
 			break;
 		}
 		case "Enter": {
-			validate();
+			validate(event);
 			break;
 		}
 		default:

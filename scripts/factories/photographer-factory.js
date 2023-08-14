@@ -21,7 +21,7 @@ function photographerFactory(data, initialTotalLike) {
 		const totalLikesElement = document.querySelector(
 			".photographer-price p"
 		);
-		totalLikesElement.innerHTML = `  ${totalLike} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour  `;
+		totalLikesElement.innerHTML = `  ${totalLike} <img src="../../assets/icons/heart-solid.svg" alt="likes"> - ${price} € / jour  `;
 	}
 
 	// créé le profil d'un photographe sur la pas d'accueil
@@ -80,7 +80,7 @@ function photographerFactory(data, initialTotalLike) {
 		photographerPicture.setAttribute("alt", name);
 		container.querySelector(
 			".photographer-price"
-		).innerHTML = ` <p>  ${totalLikes} <img src="../../assets/icons/heart-solid.svg"> - ${price} € / jour </p>`;
+		).innerHTML = ` <p>  ${totalLikes} <img src="../../assets/icons/heart-solid.svg" alt="likes" > - ${price} € / jour </p>`;
 	}
 	return {
 		name,
