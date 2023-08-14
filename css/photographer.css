@@ -81,7 +81,7 @@
 
 .filter-by {
     height: 40px;
-    line-height: 40px;
+    line-height: 25px;
 }
 
 #selected-filter {
@@ -103,7 +103,7 @@
     width: 25px;
     position: absolute;
     top: 25px;
-    left: 220px;
+    left: 260px;
     cursor: pointer;
     transition: all 0.5s;
 }
@@ -122,7 +122,7 @@
     row-gap: 15px;
     padding-left: 15px;
     padding-right: 15px;
-    left: 60px;
+    left: 100px;
     top: 60px;
     opacity: 0;
 }
