@@ -89,6 +89,8 @@ function photographerMediasfactory(mediaData, photographerId) {
 			const imgContainer = document.createElement("img");
 			imgContainer.setAttribute("src", linkmedias);
 			imgContainer.setAttribute("data-id", mediaData.id);
+			imgContainer.setAttribute("alt", mediaData.title);
+
 			imgContainer.classList.add("img-media");
 			imgContainer.classList.add("media-lightbox");
 			container.appendChild(imgContainer);
@@ -97,6 +99,8 @@ function photographerMediasfactory(mediaData, photographerId) {
 			videoContainer.setAttribute("src", linkvideos);
 			videoContainer.setAttribute("controls", linkvideos);
 			videoContainer.setAttribute("data-id", mediaData.id);
+			videoContainer.setAttribute("alt", mediaData.title);
+
 			videoContainer.classList.add("video-media");
 			videoContainer.classList.add("media-lightbox");
 			videoContainer.style.cursor = "pointer";

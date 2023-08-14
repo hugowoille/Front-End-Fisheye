@@ -4,9 +4,7 @@ function displayModal(name) {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
 
-	document.getElementById(
-		"contact-name"
-	).innerHTML = `Contactez moi <br> ${name}`;
+	document.getElementById("contact-name").innerText = `Contactez moi ${name}`;
 }
 
 // eslint-disable-next-line no-unused-vars
